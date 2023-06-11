@@ -1,5 +1,5 @@
 //Questions to be used for the quiz
-var questions = [
+var questionList = [
     {
         quizQuestion:"Question #1: In which movie does a princess dance with the villain?",
         options: ["Moana", "Beauty and the Beast", "Frozen", "Tangled"],
@@ -33,7 +33,7 @@ var questions = [
     {
         quizQuestion:"Question #7: Which musical artist/band did lilo copy the most?",
         options: ["Johnny Cash", "The Beatles", "Jackson 5", "Elvis Presley"],
-        correctAnswer: 4,
+        correctAnswer: 3,
     },
     {
         quizQuestion:"Question #8: How many land's are inside the Disneyland park?",
@@ -52,3 +52,57 @@ var questions = [
     },
 ]
 
+var score = 0;
+var iter = 0;
+var questionEntry = document.getElementById("questionEntry")
+var answerEntry = document.getElementById("answerEntry")
+var quizOptions = document.querySelectorAll("li")
+
+//Function to grab the questions from the list using iter to cycle through them.
+function getCurrentQuestion(){
+    var ret = questionList[iter];
+    console.log(ret)
+    return ret;
+}
+
+
+//Making the logic for the questions to pop up.
+function quiz(){
+    var currentQuestion = getCurrentQuestion()
+    questionEntry.textContent = currentQuestion.quizQuestion;
+    console.log('quizOptions', quizOptions)
+    quizOptions.forEach(function(quizOption, index) {
+        quizOption.textContent = currentQuestion.options[index];
+        quizOption.removeEventListener("click", correctAnswer);
+        quizOption.removeEventListener("click", incorrectAnswer);
+        if (index == currentQuestion.correctAnswer) {
+            quizOption.addEventListener("click", correctAnswer);
+        } else {
+            quizOption.addEventListener("click", incorrectAnswer);
+        }
+    });
+}
+// Logic for when the answers are clicked correctly/inncorrectly
+function correctAnswer() {
+    iter++;
+    (score = score + 10);
+    if (iter < questionList.length) {
+        quiz();
+    } else {
+        changeToEndScreen();
+        timeCounter.setAttribute("style", "display: none");
+    }
+}
+
+function incorrectAnswer() {
+    iter++;
+    (score = score - 0);
+        if (iter < questionList.length) {
+        quiz();
+    } else {
+        changeToEndScreen();
+        timeCounter.setAttribute("style", "display: none");
+    }
+}
+
+quiz()
