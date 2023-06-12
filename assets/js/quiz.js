@@ -59,6 +59,7 @@ var answerEntry = document.getElementById("answerEntry")
 var quizOptions = document.querySelectorAll("li")
 var timer = document.getElementById("timer")
 var scoreCounter = document.getElementById("scoreCounter")
+var highscores;
 
 //Function to grab the questions from the list using iter to cycle through them.
 function getCurrentQuestion(){
@@ -92,7 +93,7 @@ function correctAnswer() {
     if (iter < questionList.length) {
         quiz();
     } else {
-        changeToEndScreen();
+        endScreen();
         timer.setAttribute("style", "display: none");
     }
 }
@@ -104,7 +105,7 @@ function incorrectAnswer() {
         if (iter < questionList.length) {
         quiz();
     } else {
-        changeToEndScreen();
+        endScreen();
         timer.setAttribute("style", "display: none");
     }
 }
@@ -125,9 +126,30 @@ function countdown() {
         if(timeLeft === 0) {
           clearInterval(timeInterval);
           timer.textContent = "Time is up!";
-          changeToEndScreen();
+          endScreen();
         }
     
       }, 1000);
     }
 countdown();
+
+function endScreen() {
+    var quizSection = document.getElementById("quizSection")
+    enterName.setAttribute("style", "display: null");
+    timeCounter.textContent = "Great job!";
+}
+
+submit.addEventListener("click", function(event) {
+    event.preventDefault();
+    var fname = document.getElementById("fname").value;
+    if (!localStorage.getItem("scoredata")) {
+        highScores = [];
+        highScores.push({name: fname, highscore: score});
+        localStorage.setItem("scoredata", JSON.stringify(highScores));
+    } else {
+        var highScores = JSON.parse(localStorage.getItem("scoredata"));
+        highScores.push({name: fname, highscore: score});
+        localStorage.setItem("scoredata", JSON.stringify(highScores));
+    
+} window.location.href = "./leaderboard.html";
+})
