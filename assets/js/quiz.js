@@ -57,11 +57,12 @@ var iter = 0;
 var questionEntry = document.getElementById("questionEntry")
 var answerEntry = document.getElementById("answerEntry")
 var quizOptions = document.querySelectorAll("li")
+var timer = document.getElementById("timer")
+var scoreCounter = document.getElementById("scoreCounter")
 
 //Function to grab the questions from the list using iter to cycle through them.
 function getCurrentQuestion(){
     var ret = questionList[iter];
-    console.log(ret)
     return ret;
 }
 
@@ -82,27 +83,51 @@ function quiz(){
         }
     });
 }
+console.log(correctAnswer);
 // Logic for when the answers are clicked correctly/inncorrectly
 function correctAnswer() {
     iter++;
     (score = score + 10);
+    scoreCounter.textContent = "Score: " + score;
     if (iter < questionList.length) {
         quiz();
     } else {
         changeToEndScreen();
-        timeCounter.setAttribute("style", "display: none");
+        timer.setAttribute("style", "display: none");
     }
 }
 
 function incorrectAnswer() {
     iter++;
-    (score = score - 0);
+    (score = score - 1);
+    scoreCounter.textContent = "Score: " + score;
         if (iter < questionList.length) {
         quiz();
     } else {
         changeToEndScreen();
-        timeCounter.setAttribute("style", "display: none");
+        timer.setAttribute("style", "display: none");
     }
 }
 
 quiz()
+
+// timer function to countdown remaining time 
+scoreCounter.textContent = "Score: " + score;
+var timeLeft = 60;
+function countdown() {
+
+    var timeInterval = setInterval(function () {
+        timeLeft--;
+        if (timeLeft !== 0) {
+          timer.textContent = "Time left: " + timeLeft + " s";
+        }
+    
+        if(timeLeft === 0) {
+          clearInterval(timeInterval);
+          timer.textContent = "Time is up!";
+          changeToEndScreen();
+        }
+    
+      }, 1000);
+    }
+countdown();
