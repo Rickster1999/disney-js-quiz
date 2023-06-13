@@ -15,9 +15,10 @@ body {
     background-size: cover;
     image-rendering: crisp-edges;
     image-resolution: 1460;
+    margin: auto;
 }
 
-.card {
+.card-1 {
     margin-left: auto;
     margin-right: auto;
     margin-top: 80px;
@@ -27,10 +28,35 @@ body {
     padding: 20px;
     text-align: center;
 }
+.card-2 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    max-width: 800px;
+    background-color: rgb(200, 195, 195);
+    border-radius: 20px;
+    padding: 20px;
+}
 
 button {
     background-color: dodgerblue;
     padding: 7px;
     border: 5px;
     border-radius: 5px;
+}
+.counterSection {
+    display: flex;
+    justify-content: space-between;
+}
+
+.questionSection {
+    font-size: x-large;
+}
+
+h2 {
+    font-size: xx-large;
+}
+
+h3, p {
+    font-size: x-large;
 }
