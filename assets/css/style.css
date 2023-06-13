@@ -51,6 +51,7 @@ button {
 
 .questionSection {
     font-size: x-large;
+    cursor: pointer;
 }
 
 h2 {
