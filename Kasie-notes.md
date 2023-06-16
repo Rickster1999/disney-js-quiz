@@ -1,0 +1,3 @@
+- Check your spelling in your ReadME file since there is no spellcheck in markdown files
+- I would have hid the question section when the quiz is finished
+- I would have the play again button go straight to the quiz

@@ -8,10 +8,10 @@
     <title>Disney Quiz</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
+<!-- Same comment, don't use element namea -->
 <header class="header">Disney Quiz</header>
 <body>
-    <main class="card-2">
+    <main class="card-1">
         <section id="counterSection" class="counterSection">
             <h2 id="timer"></h2>
             <h2 id="scoreCounter"></h2>
@@ -27,11 +27,12 @@
         </section>
         <div id="enterName" style="display: none">
             <h3>Please enter your name to show off your score!</h3>
+            <!-- We should set up a linter for you that formats HTML. I have moved your elements to be at the correct spacing. It makes the document easier to read. -->
             <form action="">
                 <input class="form" type="text" id="fname" name="fname">
                 <button type="submit" id="submit" value="Submit">Submit</button>
-                </form>
-                </div>
+            </form>
+        </div>
     </main>
     <script src="assets/js/quiz.js"></script>
 </body>

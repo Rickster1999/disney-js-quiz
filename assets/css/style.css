@@ -1,3 +1,4 @@
+/* General best practice is to put your properties in alphabetical order within each class */
 .header {
     background-color: rgb(200, 195, 195);
     font-size: 40px;
@@ -16,9 +17,30 @@ body {
     image-rendering: crisp-edges;
     image-resolution: 1460;
     margin: auto;
+    /* add height: vh to make it the whole page */
 }
 
-.card-1 {
+/* If your teacher hasn't already talked to you about it look up the concept of DRY code. Here you have almost the exact same code except for 
+one line for card-1 and card-2. Instead you could just add another class name to avoid repeat code. */
+
+ .card-1 {
+    /* Could shorthand this to margin: 80px auto 0 <-- this is top ,left and right bottom. 
+    Read the syntax section: https://developer.mozilla.org/en-US/docs/Web/CSS/margin */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    max-width: 800px;
+    background-color: rgb(200, 195, 195);
+    border-radius: 20px;
+    padding: 20px;
+    
+}
+.card-text-align {
+     text-align: center;
+
+}
+
+/* .card-1 {
     margin-left: auto;
     margin-right: auto;
     margin-top: 80px;
@@ -36,7 +58,7 @@ body {
     background-color: rgb(200, 195, 195);
     border-radius: 20px;
     padding: 20px;
-}
+} */
 
 button {
     background-color: dodgerblue;
@@ -44,6 +66,7 @@ button {
     border: 5px;
     border-radius: 5px;
 }
+/* You use snake case (card-1) and camel case (counterSection) I would pick one and stick with it */
 .counterSection {
     display: flex;
     justify-content: space-between;
